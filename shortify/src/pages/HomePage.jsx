@@ -10,8 +10,9 @@ function HomePage () {
         <NavBar />
         <Grid2 container spacing={2}>
             <Grid2 item xs={12} sm={3}>
-                <ShortenerForm />
+            <ShortenerForm />
             </Grid2>
+            
 
             <Grid2 item xs={12} sm={9}>
                 <LinksList />
