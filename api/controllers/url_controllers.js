@@ -1,8 +1,7 @@
-const Url = require('../models/Url'); // Import the Url model
+const Url = require('../models/Url'); 
 
-const createShortenedUrl = async (req, res, next) => {
+const createShortenedUrl = async (req, res) => {
     try {
-        // Extract original URL from request body
         const { originalUrl } = req.body;
 
         if (!originalUrl) {
@@ -31,6 +30,22 @@ const createShortenedUrl = async (req, res, next) => {
                 shortUrl: newUrl.shortUrl
             }
         });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json("Internal Server Error.");
+    }
+};
+
+
+const getAllUrls = async (req, res) => {
+    try {
+        const urls = await Url.find();
+
+        if (!urls || urls.length === 0) {
+            return res.status(404).json("Not Found: No URLs found.");
+        }
+
+        return res.status(200).json(urls);
     } catch (error) {
         console.error(error);
         res.status(500).json("Internal Server Error.");
