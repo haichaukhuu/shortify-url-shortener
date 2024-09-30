@@ -1,28 +1,17 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
+const connectMongoDB = require("./config/db");
 
-const app = express()
-
-// DATABASE
-const connectMongoDB = async() => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URI);
-          
-        console.log("Database is successfully connected!")
-    }
-    catch(error){
-        console.log(error)
-    }
-}
+const app = express();
 
 // middlewares
-dotenv.config()
+dotenv.config();
 app.use(express.json());
 
 app.listen(process.env.PORT || 3000, () => { 
-    connectMongoDB()
+  connectMongoDB();
 
-    console.log("App is running on port ", process.env.PORT,"...")
-})
+  console.log("App is running on port ", process.env.PORT,"...");
+});
