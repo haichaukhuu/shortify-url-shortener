@@ -7,6 +7,7 @@ function ShortenerForm (){
       sx={{
         border: "1px solid #1976D2",
         borderRadius: "8px",
+        marginTop: "72px",
         p: 4,
         display: "inline-block",
         textAlign: "center",
