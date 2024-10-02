@@ -45,7 +45,10 @@ const getAllUrls = async (req, res) => {
             return res.status(404).json("Not Found: No URLs found.");
         }
 
-        return res.status(200).json(urls);
+        return res.status(200).json({
+            message: "OK: Shortened URL created successfully!",
+            data: {urls}
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json("Internal Server Error.");
