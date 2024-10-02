@@ -25,3 +25,5 @@ dist-ssr
 *.sw?
 views
 .env
+
+project-notes
