@@ -1,3 +1,4 @@
+const crypto = require('crypto'); 
 const Url = require('../models/url');
 
 const createShortenedUrl = async (req, res) => {
@@ -5,30 +6,35 @@ const createShortenedUrl = async (req, res) => {
         const { originalUrl } = req.body;
 
         if (!originalUrl) {
-            return res.status(400).json("Bad Request: Original URL is required!");
+            return res.status(400).json({ message: "Original URL is required!" });
         }
 
-        // 6-character random string
-        const shortenedUrl = Math.random().toString(36).substring(2, 8);
+        const existingUrl = await Url.findOne({ originalUrl });
+        if (existingUrl) {
+            return res.status(200).json({
+                message: "URL was already shortened!",
+                data: { shortUrl: existingUrl.shortenedUrl }
+            });
+        }
 
-        const newUrl = await Url.create({
-            originalUrl: originalUrl,     
-            shortenedUrl: shortenedUrl, 
+        //6 char code for the short URL
+        const shortenedUrl = crypto.randomBytes(3).toString('hex');
+
+        const newUrl = new Url({
+            originalUrl,
+            shortenedUrl,
             clicks: 0,
+            createdAt: Date.now()
         });
-
-        const baseUrl = `${req.protocol}://${req.get('host')}`;
+        await newUrl.save();
 
         return res.status(201).json({
-            message: "Created: Shortened URL created successfully!",
-            data: {
-                originalUrl: newUrl.originalUrl,
-                shortUrl: `${baseUrl}/${newUrl.shortenedUrl}`
-            }
+            message: "Shortened URL created successfully!",
+            data: { shortUrl: newUrl.shortenedUrl }
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json("Internal Server Error.");
+        return res.status(500).json({ message: "Internal Server Error" });
     }
 };
 
@@ -47,18 +53,13 @@ const redirectUrl = async (req, res) => {
         return res.status(404).json({ error: "Not Found: URL does not exist!" });
       }
   
-      url.clicks += 1;
+      url.clicks += 1; 
       await url.save();
   
-      return res.status(200).redirect(url.originalUrl);
+      return res.redirect(url.originalUrl);
     } catch (error) {
-      if (error instanceof mongoose.Error) {
-        console.error(error);
-        return res.status(500).json({ error: "Internal Server Error: Database error" });
-      } else {
-        console.error(error);
-        return res.status(500).json({ error: "Internal Server Error" });
-      }
+      console.error(error);
+      return res.status(500).json({ error: "Internal Server Error" });
     }
   };
 
