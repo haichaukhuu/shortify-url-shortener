@@ -1,4 +1,4 @@
-const Url = require('../models/Url'); 
+const Url = require('../models/url');
 
 const createShortenedUrl = async (req, res) => {
     try {
@@ -8,26 +8,22 @@ const createShortenedUrl = async (req, res) => {
             return res.status(400).json("Bad Request: Original URL is required!");
         }
 
-        const isExistedUrl = await Url.findOne({ originalUrl });
-        if (isExistedUrl) {
-            return res.status(400).json("Bad Request: URL was already shortened!");
-        }
-
-        // Creates a 6-character random string
-        const shortenedUrl = Math.random().toString(36).substring(2, 6); 
+        // 6-character random string
+        const shortenedUrl = Math.random().toString(36).substring(2, 8);
 
         const newUrl = await Url.create({
             originalUrl: originalUrl,     
             shortenedUrl: shortenedUrl, 
-            clicks: 0,       
-            createdAt: Date.now() 
+            clicks: 0,
         });
+
+        const baseUrl = `${req.protocol}://${req.get('host')}`; // Get base URL
 
         return res.status(201).json({
             message: "Created: Shortened URL created successfully!",
             data: {
                 originalUrl: newUrl.originalUrl,
-                shortUrl: newUrl.shortUrl
+                shortUrl: `${baseUrl}/${newUrl.shortenedUrl}`
             }
         });
     } catch (error) {
@@ -35,6 +31,7 @@ const createShortenedUrl = async (req, res) => {
         res.status(500).json("Internal Server Error.");
     }
 };
+
 
 
 const getAllUrls = async (req, res) => {
@@ -46,8 +43,8 @@ const getAllUrls = async (req, res) => {
         }
 
         return res.status(200).json({
-            message: "OK: Shortened URL created successfully!",
-            data: {urls}
+            message: "OK: URLs retrieved successfully!",
+            data: urls
         });
     } catch (error) {
         console.error(error);
@@ -55,4 +52,4 @@ const getAllUrls = async (req, res) => {
     }
 };
 
-module.exports = createShortenedUrl;
+module.exports = { createShortenedUrl, getAllUrls };

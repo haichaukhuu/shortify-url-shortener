@@ -4,6 +4,7 @@ const urlSchema = new mongoose.Schema({
   originalUrl: {
     type: String,
     required: true,
+    unique: true,
     trim: true,
   },
   shortenedUrl: {
@@ -19,9 +20,7 @@ const urlSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now, // when the URL was shortened
-    // expires: 2592000,  // delete documents after 30 days (seconds)
   },
 });
 
-
-module.exports=mongoose.model("URL", urlSchema)
+module.exports = mongoose.model("URL", urlSchema);
