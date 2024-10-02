@@ -39,6 +39,7 @@ function ShortenerForm() {
         p: 4,
         display: "inline-block",
         textAlign: "center",
+        width: "40vw"
       }}
     >
       <Typography

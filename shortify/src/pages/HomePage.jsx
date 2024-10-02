@@ -6,15 +6,14 @@ import LinksList from "../components/LinksList";
 
 function HomePage () {
   return (
-    <Container maxWidth={false} maxHeight={false}>
+    <Container maxWidth={false}>
         <NavBar />
-        <Grid2 container spacing={2}>
-            <Grid2 item xs={12} sm={3}>
-            <ShortenerForm />
+        <Grid2 container spacing={2} sx={{ height: 'calc(100vh - 72px)' }}>
+            <Grid2 item xs={12} sm={6}>
+                <ShortenerForm />
             </Grid2>
-            
 
-            <Grid2 item xs={12} sm={9}>
+            <Grid2 item xs={12} sm={6}>
                 <LinksList />
             </Grid2>
         </Grid2>
