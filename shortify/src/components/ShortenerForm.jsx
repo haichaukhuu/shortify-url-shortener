@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, TextField, Button, Alert } from "@mui/material";
 import axios from "axios"; 
 
-function ShortenerForm() {
+function ShortenerForm({ addLink }) { 
   const [longUrl, setLongUrl] = useState(""); 
   const [shortUrl, setShortUrl] = useState(""); 
   const [error, setError] = useState("");
@@ -21,15 +21,19 @@ function ShortenerForm() {
         originalUrl: longUrl, 
       });
 
-      setShortUrl(`http://localhost:3000/api/${response.data.data.shortUrl}`);
+      const newShortUrl = `http://localhost:3000/api/${response.data.data.shortUrl}`;
+      setShortUrl(newShortUrl);
       setError(""); 
-      setCopySuccess(""); //reset copy success msg, when gen new URL 
+      setCopySuccess(""); 
+
+      
+      addLink(newShortUrl, longUrl, new Date().toISOString());
+
     } catch (error) {
       setError("Failed to create short URL. Please try again.");
       console.error(error);
     }
   };
-
 
   const handleCopy = () => {
     navigator.clipboard.writeText(shortUrl)
@@ -99,7 +103,6 @@ function ShortenerForm() {
         </Alert>
       )}
 
-      {/* DISPLAY SHORT URL */}
       {shortUrl && (
         <Box sx={{ mt: 2 }}>
           <Typography
@@ -113,7 +116,6 @@ function ShortenerForm() {
             </a>
           </Typography>
 
-          {/* Copy btn*/}
           <Button
             variant="outlined"
             onClick={handleCopy}
@@ -122,7 +124,6 @@ function ShortenerForm() {
             Copy to Clipboard
           </Button>
 
-          {/* Copy success msg */}
           {copySuccess && (
             <Typography
               variant="body2"

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Box } from "@mui/material";
-import LinkCard from "./LinkCard"; // Import the LinkCard component
+import LinkCard from "./LinkCard"; 
 
 function LinksList({ results }) {
 
