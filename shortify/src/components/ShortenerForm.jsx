@@ -48,7 +48,7 @@ function ShortenerForm() {
       sx={{
         border: "1px solid #1976D2",
         borderRadius: "8px",
-        marginTop: "72px",
+        marginTop: "80px",
         p: 4,
         display: "inline-block",
         textAlign: "center",
@@ -56,7 +56,7 @@ function ShortenerForm() {
       }}
     >
       <Typography
-        variant="h4"
+        variant="h5"
         component="h1"
         sx={{ mb: 2, color: "#1976D2", fontWeight: "bold" }}
       >

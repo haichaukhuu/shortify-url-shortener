@@ -7,11 +7,12 @@ function LinksList({ results }) {
   return (
     <Box
       sx={{
-        marginTop: "72px",
+        background: 'white',
+        marginTop: "80px",
         // padding: "20px",
         overflowY: "scroll",
         width: "50vw",
-        height: "calc(100vh - 72px)",
+        height: "calc(100vh - 85px)",
       }}
     >
 
@@ -31,7 +32,7 @@ function LinksList({ results }) {
           // padding: "20px",
           overflowY: "scroll",
           width: "50vw",
-          height: "calc(100vh - 72px)",
+          height: "calc(100vh - 85px)",
         }}
       >
           No links available.

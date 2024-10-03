@@ -16,16 +16,14 @@ function HomePage () {
   
   
   return (
-    <Container maxWidth={false}>
+    <Container maxWidth={false}  sx={{ background: 'white', width: '100vw'}}>
         <NavBar />
-        <Grid2 container spacing={2} sx={{ height: 'calc(100vh - 72px)' }}>
+        <Grid2 container spacing={2} sx={{ background: 'white', height: 'calc(100vh)', width: '100%' }}>
             <Grid2 item xs={12} sm={6}>
                 <ShortenerForm />
             </Grid2>
 
             <Grid2 item xs={12} sm={6}>
-                {/* <LinksList /> */}
-
                 <LinksList results={results} />
 
             </Grid2>

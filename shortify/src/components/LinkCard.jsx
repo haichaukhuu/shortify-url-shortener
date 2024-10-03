@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Typography, Box, Button, Modal } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 
 function LinkCard({ shortUrl, longUrl, createdAt }) {
-  const [open, setOpen] = useState(false); //modal visibility
+  // const [open, setOpen] = useState(false); //modal visibility
 
   //  open/close the modal
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
   return (
 
@@ -29,7 +29,7 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
       // display urls
       <Typography
         variant="body1"
-        sx={{ color: "blue"}}
+        sx={{ color: "blue", fontWeight: "bold"}}
       >
         Original URL
       </Typography>
@@ -46,7 +46,7 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
 
       <Typography
         variant="body1"
-        sx={{ color: "blue"}}
+        sx={{ color: "blue", fontWeight: "bold"}}
       >
         Shortened URL
       </Typography>
@@ -59,7 +59,6 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
           {shortUrl}
         </a>
       </Typography>
-
 
 
       <Typography variant="body2" sx={{ marginTop: "4px", color: "blue" }}>

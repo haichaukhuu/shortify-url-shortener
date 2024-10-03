@@ -11,14 +11,14 @@ import Typography from "@mui/material/Typography";
 export default function NavBar() {
 
     return (
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, width: "100%" }}>
         <AppBar position="fixed">
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <Typography
-              variant="h6"
+              variant="h4"
               noWrap
               component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
+              sx={{ display: { xs: "none", sm: "block" }, fontWeight: "bold" }}
             >
               Shortify
             </Typography>
