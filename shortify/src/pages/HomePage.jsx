@@ -5,6 +5,16 @@ import NavBar from "../components/NavBar";
 import LinksList from "../components/LinksList";
 
 function HomePage () {
+  const results = [
+    { shortUrl: "https://shortify/abc123", longUrl: "https://longURLexample.com", createdAt: "2024-10-03" },
+    { shortUrl: "https://shortify/abc123", longUrl: "https://longURLexample.com", createdAt: "2024-10-03" },
+    { shortUrl: "https://shortify/abc123", longUrl: "https://longURLexample.com", createdAt: "2024-10-03" },
+    { shortUrl: "https://shortify/abc123", longUrl: "https://longURLexample.com", createdAt: "2024-10-03" },
+    { shortUrl: "https://shortify/abc123", longUrl: "https://longURLexample.com", createdAt: "2024-10-03" },
+  ];
+  
+  
+  
   return (
     <Container maxWidth={false}>
         <NavBar />
@@ -14,7 +24,10 @@ function HomePage () {
             </Grid2>
 
             <Grid2 item xs={12} sm={6}>
-                <LinksList />
+                {/* <LinksList /> */}
+
+                <LinksList results={results} />
+
             </Grid2>
         </Grid2>
     </Container>
