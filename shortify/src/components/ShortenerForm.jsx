@@ -6,6 +6,7 @@ function ShortenerForm() {
   const [longUrl, setLongUrl] = useState(""); 
   const [shortUrl, setShortUrl] = useState(""); 
   const [error, setError] = useState("");
+  const [copySuccess, setCopySuccess] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,10 +23,22 @@ function ShortenerForm() {
 
       setShortUrl(`http://localhost:3000/api/${response.data.data.shortUrl}`);
       setError(""); 
+      setCopySuccess(""); //reset copy success msg, when gen new URL 
     } catch (error) {
       setError("Failed to create short URL. Please try again.");
       console.error(error);
     }
+  };
+
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(shortUrl)
+      .then(() => {
+        setCopySuccess("URL copied to clipboard!");
+      })
+      .catch(() => {
+        setCopySuccess("Failed to copy URL.");
+      });
   };
 
   return (
@@ -88,16 +101,37 @@ function ShortenerForm() {
 
       {/* DISPLAY SHORT URL */}
       {shortUrl && (
-        <Typography
-          variant="h6"
-          component="p"
-          sx={{ mt: 2, color: "#1976D2", fontWeight: "bold" }}
-        >
-          Shortened URL:{" "}
-          <a href={shortUrl} target="_blank" rel="noopener noreferrer">
-            {shortUrl}
-          </a>
-        </Typography>
+        <Box sx={{ mt: 2 }}>
+          <Typography
+            variant="h6"
+            component="p"
+            sx={{ color: "#1976D2", fontWeight: "bold" }}
+          >
+            Shortened URL:{" "}
+            <a href={shortUrl} target="_blank" rel="noopener noreferrer">
+              {shortUrl}
+            </a>
+          </Typography>
+
+          {/* Copy btn*/}
+          <Button
+            variant="outlined"
+            onClick={handleCopy}
+            sx={{ mt: 1, textTransform: "none" }}
+          >
+            Copy to Clipboard
+          </Button>
+
+          {/* Copy success msg */}
+          {copySuccess && (
+            <Typography
+              variant="body2"
+              sx={{ mt: 1, color: "#4caf50" }}
+            >
+              {copySuccess}
+            </Typography>
+          )}
+        </Box>
       )}
     </Box>
   );
