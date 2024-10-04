@@ -3,7 +3,9 @@ import { Box } from "@mui/material";
 import LinkCard from "./LinkCard";
 
 function LinksList({ results }) {
-  const hasResults = results && results.length > 0;
+  const sortedResults = results && results.length > 0
+    ? [...results].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    : [];
 
   return (
     <Box
@@ -12,11 +14,11 @@ function LinksList({ results }) {
         marginTop: "80px",
         width: "50vw",
         height: "calc(100vh - 85px)",
-        overflowY: hasResults ? "scroll" : "hidden", 
+        overflowY: sortedResults.length > 0 ? "scroll" : "hidden", 
       }}
     >
-      {hasResults ? (
-        results.map((result, index) => (
+      {sortedResults.length > 0 ? (
+        sortedResults.map((result, index) => (
           <LinkCard
             key={index}
             shortUrl={result.shortUrl}
@@ -26,7 +28,6 @@ function LinksList({ results }) {
         ))
       ) : (
         <Box>
-
         </Box>
       )}
     </Box>
