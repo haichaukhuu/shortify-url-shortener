@@ -52,7 +52,6 @@ function ShortenerForm({ addLink }) {
       sx={{
         border: "1px solid #1976D2",
         borderRadius: "8px",
-        marginTop: "80px",
         p: 4,
         display: "inline-block",
         textAlign: "center",

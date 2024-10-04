@@ -15,7 +15,7 @@ export default function NavBar() {
         <AppBar position="fixed">
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <Typography
-              variant="h4"
+              variant="h5"
               noWrap
               component="div"
               sx={{ display: { xs: "none", sm: "block" }, fontWeight: "bold" }}
