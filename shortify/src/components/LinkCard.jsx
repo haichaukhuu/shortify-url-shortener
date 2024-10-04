@@ -7,6 +7,15 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
   //  open/close the modal
   // const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
+  const formattedDate = new Date(createdAt).toLocaleString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
 
   return (
 
@@ -61,8 +70,8 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
       </Typography>
 
 
-      <Typography variant="body2" sx={{ marginTop: "4px", color: "blue" }}>
-        Created At: {createdAt}
+      <Typography variant="body2" sx={{ marginTop: "4px", color: "grey" }}>
+        Created At: {formattedDate}
       </Typography>
 
       {/* Buttons */}
