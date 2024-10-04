@@ -1,64 +1,32 @@
-import React, { useState } from "react"
+import React from "react";
 import { Box } from "@mui/material";
-import LinkCard from "./LinkCard"; 
+import LinkCard from "./LinkCard";
 
 function LinksList({ results }) {
+  const hasResults = results && results.length > 0;
 
   return (
     <Box
       sx={{
         background: 'white',
         marginTop: "80px",
-        // padding: "20px",
-        overflowY: "scroll",
         width: "50vw",
         height: "calc(100vh - 85px)",
+        overflowY: hasResults ? "scroll" : "hidden", 
       }}
     >
-
-{results && results.length > 0 ? (
+      {hasResults ? (
         results.map((result, index) => (
           <LinkCard
-            key={index} 
-            shortUrl={result.shortUrl} 
-            longUrl={result.longUrl} 
-            createdAt={result.createdAt} 
+            key={index}
+            shortUrl={result.shortUrl}
+            longUrl={result.longUrl}
+            createdAt={result.createdAt}
           />
         ))
       ) : (
-        <Box
-        sx={{
-          marginTop: "72px",
-          // padding: "20px",
-          overflowY: "scroll",
-          width: "50vw",
-          height: "calc(100vh - 85px)",
-        }}
-      >
-          No links available.
-        </Box>
-      )}
+        <Box>
 
-      {results && results.length > 0 ? (
-        results.map((result, index) => (
-          <LinkCard
-            key={index} 
-            shortUrl={result.shortUrl} 
-            longUrl={result.longUrl} 
-            createdAt={result.createdAt} 
-          />
-        ))
-      ) : (
-        <Box
-        sx={{
-          marginTop: "72px",
-          // padding: "20px",
-          overflowY: "scroll",
-          width: "50vw",
-          height: "calc(100vh - 72px)",
-        }}
-      >
-          No links available.
         </Box>
       )}
     </Box>
