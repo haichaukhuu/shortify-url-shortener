@@ -29,13 +29,12 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
         backgroundColor: "#f9f9f9",
       }}
     >
-      <Typography 
+      {/* <Typography 
       variant="h6"
       sx={{ color: "#1976D2", fontWeight: "bold" }}>
         URL Name
-      </Typography>
+      </Typography> */}
 
-      // display urls
       <Typography
         variant="body1"
         sx={{ color: "blue", fontWeight: "bold"}}
