@@ -14,7 +14,6 @@ app.use(express.json());
 app.use(cors({
   origin: 'https://shortify-url-shortener.vercel.app', 
   methods: ['GET', 'POST'], 
-  allowedHeaders: ['Content-Type'],
 }));
 connectMongoDB();
 
