@@ -10,12 +10,11 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
-// app.use(cors({
-//   origin: 'https://shortify-url-shortener.vercel.app', 
-//   methods: ['GET', 'POST'], 
-//   credentials: true
-// }));
+app.use(cors({
+  origin: ['https://shortify-url-shortener.vercel.app/'], 
+  methods: ['GET', 'POST'], 
+  credentials: true
+}));
 connectMongoDB();
 
 // API Routes
