@@ -25,7 +25,7 @@ function LoginPage() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{paddingTop: '80px'}}>
       <Box
         sx={{
           marginTop: 8,
@@ -38,7 +38,7 @@ function LoginPage() {
           backgroundColor: 'white',
         }}
       >
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" sx = {{color: 'blue', fontWeight: "bold"}}>
           Login
         </Typography>
 
@@ -68,7 +68,7 @@ function LoginPage() {
             fullWidth
             variant="contained"
             color="primary"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ marginTop: 3, marginBottom: 2 }}
             onClick={handleLogin}
           >
             Login
@@ -76,9 +76,9 @@ function LoginPage() {
 
           <Grid2 container justifyContent="center">
             <Grid2 item>
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{ textDecoration: 'none', color: 'blue' }}>
                 Don't have an account?{' '}
-                <Link to="/register" style={{ textDecoration: 'none', color: '#3f51b5' }}>
+                <Link to="/register" >
                   Register here!
                 </Link>
               </Typography>
