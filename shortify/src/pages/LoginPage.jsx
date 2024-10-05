@@ -17,14 +17,14 @@ function LoginPage() {
       });
 
       localStorage.setItem('token', response.data.token);
-      navigate('/'); // Redirect to homepage after login
+      navigate('/');
     } catch (err) {
       setError('Invalid credentials, please try again.');
     }
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{paddingTop: '80px'}}>
+    <Container component="main" maxWidth="xs" sx={{ paddingTop: '80px' }}>
       <Box
         sx={{
           marginTop: 8,
@@ -37,7 +37,7 @@ function LoginPage() {
           backgroundColor: 'white',
         }}
       >
-        <Typography component="h1" variant="h5" sx = {{color: 'blue', fontWeight: "bold"}}>
+        <Typography component="h1" variant="h5" sx={{ color: 'blue', fontWeight: 'bold' }}>
           Login
         </Typography>
 
@@ -77,9 +77,7 @@ function LoginPage() {
             <Grid2 item>
               <Typography variant="body2" sx={{ textDecoration: 'none', color: 'blue' }}>
                 Don't have an account?{' '}
-                <Link to="/register" >
-                  Register here!
-                </Link>
+                <Link to="/register">Register here!</Link>
               </Typography>
             </Grid2>
           </Grid2>

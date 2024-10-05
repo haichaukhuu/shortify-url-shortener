@@ -10,7 +10,12 @@ function RegisterPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
+    if (password !== confirmPassword) {
+      setError('Passwords do not match!');
+      return;
+    }
+
     try {
       const response = await axios.post('http://localhost:3000/api/auth/register', {
         email,
@@ -19,14 +24,14 @@ function RegisterPage() {
       });
 
       localStorage.setItem('token', response.data.token);
-      navigate('/'); // Redirect to homepage after register
+      navigate('/');
     } catch (err) {
-      setError('Invalid credentials, please try again.');
+      setError('Registration failed, please try again.');
     }
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{paddingTop: '80px'}}>
+    <Container component="main" maxWidth="xs" sx={{ paddingTop: '80px' }}>
       <Box
         sx={{
           marginTop: 8,
@@ -39,7 +44,7 @@ function RegisterPage() {
           backgroundColor: 'white',
         }}
       >
-        <Typography component="h1" variant="h5" sx = {{color: 'blue', fontWeight: "bold"}}>
+        <Typography component="h1" variant="h5" sx={{ color: 'blue', fontWeight: 'bold' }}>
           Register
         </Typography>
 
@@ -62,12 +67,11 @@ function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
-        <TextField
+          <TextField
             margin="normal"
             required
             fullWidth
-            label="Confirm password"
+            label="Confirm Password"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -80,7 +84,7 @@ function RegisterPage() {
             variant="contained"
             color="primary"
             sx={{ marginTop: 3, marginBottom: 2 }}
-            onClick={handleLogin}
+            onClick={handleRegister}
           >
             Register
           </Button>
@@ -89,9 +93,7 @@ function RegisterPage() {
             <Grid2 item>
               <Typography variant="body2" sx={{ textDecoration: 'none', color: 'blue' }}>
                 Already have an account?{' '}
-                <Link to="/login" >
-                  Login here!
-                </Link>
+                <Link to="/login">Login here!</Link>
               </Typography>
             </Grid2>
           </Grid2>
