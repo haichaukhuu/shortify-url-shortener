@@ -11,7 +11,7 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(cors({
-  origin: ['https://shortify-url-shortener.vercel.app/'], 
+  origin: ['https://shortify-url-shortener.vercel.app'], 
   methods: ['GET', 'POST'], 
   credentials: true
 }));

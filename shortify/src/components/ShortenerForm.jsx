@@ -10,7 +10,7 @@ function ShortenerForm({ addLink }) {
   const [copySuccess, setCopySuccess] = useState("");
 
   // const apiBaseUrl = "https://shortify-ijvzxqpso-khuu-hai-chaus-projects.vercel.app";
-  const apiBaseUrl = "https://shortify-api.vercel.app/";
+  const apiBaseUrl = "https://shortify-api.vercel.app";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
