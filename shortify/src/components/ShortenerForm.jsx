@@ -17,11 +17,11 @@ function ShortenerForm({ addLink }) {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/create", {
+      const response = await axios.post("http://localhost:3000/api/urls/create", {
         originalUrl: longUrl, 
       });
 
-      const newShortUrl = `http://localhost:3000/api/${response.data.data.shortUrl}`;
+      const newShortUrl = `http://localhost:3000/api/urls/${response.data.data.shortUrl}`;
       setShortUrl(newShortUrl);
       setError(""); 
       setCopySuccess(""); 
