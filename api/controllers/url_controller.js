@@ -3,25 +3,22 @@ const Url = require('../models/url');
 
 const createShortenedUrl = async (req, res) => {
     try {
-        let { originalUrl } = req.body;
+        let { originalUrl, customCode } = req.body;
 
         if (!originalUrl) {
             return res.status(400).json({ message: "Original URL is required!" });
         }
-        // const existingUrl = await Url.findOne({ originalUrl });
-        // if (existingUrl) {
-        //     return res.status(200).json({
-        //         message: "URL was already shortened!",
-        //         data: { shortUrl: existingUrl.shortenedUrl }
-        //     });
-        // }
-
 
         // Allow duplicate long URLs (each submission should create a new short URL)
         //resolve by appending timestamp to original url
         const uniqueUrl = `${originalUrl}?timestamp=${Date.now()}`;
 
-        const shortenedUrl = crypto.randomBytes(3).toString('hex');
+        if (customCode) {
+          shortenedUrl = customCode; 
+        } else {
+          shortenedUrl = crypto.randomBytes(3).toString('hex');
+        }
+
 
         const newUrl = new Url({
             originalUrl: uniqueUrl, 

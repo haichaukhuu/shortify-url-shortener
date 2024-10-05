@@ -4,6 +4,7 @@ import axios from "axios";
 
 function ShortenerForm({ addLink }) { 
   const [longUrl, setLongUrl] = useState(""); 
+  const [customCode, setCustomCode] = useState("");
   const [shortUrl, setShortUrl] = useState(""); 
   const [error, setError] = useState("");
   const [copySuccess, setCopySuccess] = useState("");
@@ -18,7 +19,8 @@ function ShortenerForm({ addLink }) {
 
     try {
       const response = await axios.post("http://localhost:3000/api/urls/create", {
-        originalUrl: longUrl, 
+        originalUrl: longUrl,
+        customCode: customCode || null
       });
 
       const newShortUrl = `http://localhost:3000/api/urls/${response.data.data.shortUrl}`;
@@ -26,7 +28,6 @@ function ShortenerForm({ addLink }) {
       setError(""); 
       setCopySuccess(""); 
 
-      
       addLink(newShortUrl, longUrl, new Date().toISOString());
 
     } catch (error) {
@@ -72,6 +73,22 @@ function ShortenerForm({ addLink }) {
         placeholder="Enter long link..."
         value={longUrl}
         onChange={(e) => setLongUrl(e.target.value)}
+        sx={{
+          mb: 2,
+          backgroundColor: "#E0E0E0",
+          borderRadius: "20px",
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "20px",
+          },
+        }}
+      />
+
+      <TextField
+        fullWidth
+        variant="outlined"
+        placeholder="Custom short code (optional)..."
+        value={customCode} 
+        onChange={(e) => setCustomCode(e.target.value)}
         sx={{
           mb: 2,
           backgroundColor: "#E0E0E0",

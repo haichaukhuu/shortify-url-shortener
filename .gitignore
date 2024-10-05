@@ -27,3 +27,6 @@ views
 .env
 
 project-notes
+
+LoginPage.jsx
+RegisterPage.jsx
