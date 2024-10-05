@@ -3,9 +3,7 @@ import {Routes, Route } from "react-router-dom";
 import { Container } from "@mui/material";
 
 import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
 import NavBar from "./components/NavBar";
-import RegisterPage from "./pages/RegisterPage";
 
 function App() {
 
