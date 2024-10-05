@@ -1,23 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
 const connectMongoDB = require("./config/db");
 const urlRoutes = require('./routes/url_routes');
+const userRoutes = require('./routes/user_routes');
 const cors = require('cors');
 
+dotenv.config();
 const app = express();
 
-// middlewares
-dotenv.config();
+// Middlewares
 app.use(express.json());
 app.use(cors());
 
-// ROUTES
-app.use("/api", urlRoutes);
+connectMongoDB();
 
-app.listen(process.env.PORT || 3000, () => { 
-  connectMongoDB();
+// API Routes
+app.use("/api/urls", urlRoutes); 
+app.use("/api/auth", userRoutes); 
 
-  console.log("App is running on port:", process.env.PORT);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`App is running on port: ${process.env.PORT || 3000}`);
 });

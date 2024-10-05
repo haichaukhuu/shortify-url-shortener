@@ -1,24 +1,18 @@
 const mongoose = require("mongoose");
 
 const urlSchema = new mongoose.Schema({
-  shortenedUrl: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-  },
   originalUrl: {
     type: String,
     required: true,
     // unique: true,
     trim: true,
   },
-  // shortenedUrl: {
-  //   type: String,
-  //   required: true,
-  //   unique: true,
-  //   trim: true,
-  // },
+  shortenedUrl: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   clicks: {
     type: Number,
     default: 0, // Tracks short URL click count
