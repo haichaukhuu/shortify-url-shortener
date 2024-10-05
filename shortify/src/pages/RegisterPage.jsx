@@ -3,21 +3,23 @@ import { Box, Button, TextField, Typography, Container, Grid2 } from '@mui/mater
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
-function LoginPage() {
+function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', {
+      const response = await axios.post('http://localhost:3000/api/auth/register', {
         email,
         password,
+        confirmPassword
       });
 
       localStorage.setItem('token', response.data.token);
-      navigate('/'); // Redirect to homepage after login
+      navigate('/'); // Redirect to homepage after register
     } catch (err) {
       setError('Invalid credentials, please try again.');
     }
@@ -38,7 +40,7 @@ function LoginPage() {
         }}
       >
         <Typography component="h1" variant="h5" sx = {{color: 'blue', fontWeight: "bold"}}>
-          Login
+          Register
         </Typography>
 
         <Box sx={{ mt: 1 }}>
@@ -61,6 +63,16 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
+        <TextField
+            margin="normal"
+            required
+            fullWidth
+            label="Confirm password"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+
           {error && <Typography color="error" variant="body2">{error}</Typography>}
 
           <Button
@@ -70,15 +82,15 @@ function LoginPage() {
             sx={{ marginTop: 3, marginBottom: 2 }}
             onClick={handleLogin}
           >
-            Login
+            Register
           </Button>
 
           <Grid2 container justifyContent="center">
             <Grid2 item>
               <Typography variant="body2" sx={{ textDecoration: 'none', color: 'blue' }}>
-                Don't have an account?{' '}
-                <Link to="/register" >
-                  Register here!
+                Already have an account?{' '}
+                <Link to="/login" >
+                  Login here!
                 </Link>
               </Typography>
             </Grid2>
@@ -89,4 +101,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
