@@ -36,6 +36,7 @@ export default function NavBar() {
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" }, fontWeight: "bold" }}
+            onClick={navigate('/')}
           >
             Shortify
           </Typography>
