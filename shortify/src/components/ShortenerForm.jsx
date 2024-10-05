@@ -9,6 +9,9 @@ function ShortenerForm({ addLink }) {
   const [error, setError] = useState("");
   const [copySuccess, setCopySuccess] = useState("");
 
+  // const apiBaseUrl = "https://shortify-ijvzxqpso-khuu-hai-chaus-projects.vercel.app";
+  const apiBaseUrl = "https://shortify-api.vercel.app/";
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -18,12 +21,14 @@ function ShortenerForm({ addLink }) {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/urls/create", {
+      // const response = await axios.post("http://localhost:3000/api/urls/create", {
+      const response = await axios.post(apiBaseUrl +" /api/urls/create", {
         originalUrl: longUrl,
         customCode: customCode || null
       });
 
-      const newShortUrl = `http://localhost:3000/api/urls/${response.data.data.shortUrl}`;
+      // const newShortUrl = `http://localhost:3000/api/urls/${response.data.data.shortUrl}`;
+      const newShortUrl = apiBaseUrl + `/api/urls/${response.data.data.shortUrl}`;
       setShortUrl(newShortUrl);
       setError(""); 
       setCopySuccess(""); 
