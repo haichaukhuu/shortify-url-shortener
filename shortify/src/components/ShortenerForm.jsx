@@ -22,7 +22,7 @@ function ShortenerForm({ addLink }) {
 
     try {
       // const response = await axios.post("http://localhost:3000/api/urls/create", {
-      const response = await axios.post(apiBaseUrl +" /api/urls/create", {
+      const response = await axios.post(apiBaseUrl + "/api/urls/create", {
         originalUrl: longUrl,
         customCode: customCode || null
       });
