@@ -61,7 +61,7 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
 
 
       <Typography variant="body2" sx={{ marginTop: "4px", color: "grey" }}>
-        Created At: {formattedDate}
+        Created On: {formattedDate}
       </Typography>
 
       {/* Buttons */}
