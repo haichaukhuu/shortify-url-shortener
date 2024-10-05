@@ -17,37 +17,26 @@ function HomePage() {
   };
 
   return (
-    <Container maxWidth={false} 
-      sx={{ 
-        width: '100vw',
-        minHeight: '100vh',
-        background: 'white' ,
-        justifyContent: 'center'
-      }}
-    >
-      <NavBar />
-      
+    
       <Grid2
         container
         spacing={2}
         sx={{
-          background: 'white',
+          paddingTop: '80px',
           display: 'flex',
           flexDirection: isSmallScreen ? 'column' : 'row',
-          justifyContent: isSmallScreen ? 'center' : 'space-around',  
-          alignItems: isSmallScreen ? 'center' : 'flex-start',  
-          paddingTop: '75px',
+          alignItem: isSmallScreen ? 'center' : 'flex-start',  
+          justifyContent: 'space-around',  
         }}
       >
-        <Grid2 item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Grid2 item xs={12} md={6}>
           <ShortenerForm addLink={addLink} />
         </Grid2>
 
-        <Grid2 item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Grid2 item xs={12} md={6}>
           <LinksList results={results} />
         </Grid2>
       </Grid2>
-    </Container>
   );
 }
 

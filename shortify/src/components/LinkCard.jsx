@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { Typography, Box, Button } from "@mui/material";
 
 function LinkCard({ shortUrl, longUrl, createdAt }) {
-  // const [open, setOpen] = useState(false); //modal visibility
 
-  //  open/close the modal
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
   const formattedDate = new Date(createdAt).toLocaleString('en-GB', {
     day: '2-digit',
     month: '2-digit',
@@ -25,8 +21,7 @@ function LinkCard({ shortUrl, longUrl, createdAt }) {
         padding: "16px",
         borderRadius: "8px",
         marginBottom: "16px",
-        width: "90%",
-
+        width: "100%",
         backgroundColor: "#f9f9f9",
       }}
     >

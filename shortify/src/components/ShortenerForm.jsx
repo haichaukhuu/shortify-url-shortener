@@ -55,7 +55,7 @@ function ShortenerForm({ addLink }) {
         p: 4,
         display: "inline-block",
         textAlign: "center",
-        width: "40vw"
+        width: "400px"
       }}
     >
       <Typography
@@ -90,7 +90,6 @@ function ShortenerForm({ addLink }) {
           color: "#fff",
           borderRadius: "20px",
           padding: "8px 24px",
-          textTransform: "none",
         }}
       >
         Create

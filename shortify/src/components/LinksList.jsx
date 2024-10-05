@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Container, useMediaQuery } from "@mui/material";
 import LinkCard from "./LinkCard";
 
 function LinksList({ results }) {
@@ -11,15 +11,12 @@ function LinksList({ results }) {
 
   return (
 
-    <Box
+    <Container
       sx={{
-        background: 'white',
         width: "50vw",
-        height: "calc(100vh - 85px)",
         display: 'flex',
-
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'flex-start'
       }}
     >
       {sortedResults.length > 0 ? (
@@ -35,7 +32,7 @@ function LinksList({ results }) {
         <Box>
         </Box>
       )}
-    </Box>
+    </Container>
   );
 }
 
