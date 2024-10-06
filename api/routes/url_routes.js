@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Url = require('../models/url.js');
 
 const { createShortenedUrl, redirectUrl, getAllUrls } = require("../controllers/url_controller");
 
