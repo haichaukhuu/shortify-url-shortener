@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const Url = require('../models/url_model');
 
 const createShortenedUrl = async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://shortify-n5pm.onrender.com');
     try {
         let { originalUrl, customCode } = req.body;
 
