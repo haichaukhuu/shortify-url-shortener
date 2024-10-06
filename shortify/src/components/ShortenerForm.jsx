@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button, Alert } from "@mui/material";
-import axios from "axios"; 
+import axios from "axios";
 
-function ShortenerForm({ addLink }) { 
-  const [longUrl, setLongUrl] = useState(""); 
+function ShortenerForm({ addLink }) {
+  const [longUrl, setLongUrl] = useState("");
   const [customCode, setCustomCode] = useState("");
-  const [shortUrl, setShortUrl] = useState(""); 
+  const [shortUrl, setShortUrl] = useState("");
   const [error, setError] = useState("");
   const [copySuccess, setCopySuccess] = useState("");
 
-  // const apiBaseUrl = "https://shortify-ijvzxqpso-khuu-hai-chaus-projects.vercel.app";
-  const apiBaseUrl = "https://shortify-api.vercel.app";
+  const apiBaseUrl = "https://shortify-backend-yywu.onrender.com"; // Change to your backend URL
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,20 +20,17 @@ function ShortenerForm({ addLink }) {
     }
 
     try {
-      // const response = await axios.post("http://localhost:3000/api/urls/create", {
-      const response = await axios.post(apiBaseUrl + "/api/urls/create", {
+      const response = await axios.post(`${apiBaseUrl}/api/urls/create`, {
         originalUrl: longUrl,
         customCode: customCode || null
       });
 
-      // const newShortUrl = `http://localhost:3000/api/urls/${response.data.data.shortUrl}`;
-      const newShortUrl = apiBaseUrl + `/api/urls/${response.data.data.shortUrl}`;
+      const newShortUrl = `${apiBaseUrl}/api/urls/${response.data.data.shortUrl}`;
       setShortUrl(newShortUrl);
-      setError(""); 
-      setCopySuccess(""); 
+      setError("");
+      setCopySuccess("");
 
       addLink(newShortUrl, longUrl, new Date().toISOString());
-
     } catch (error) {
       setError("Failed to create short URL. Please try again.");
       console.error(error);
@@ -92,7 +88,7 @@ function ShortenerForm({ addLink }) {
         fullWidth
         variant="outlined"
         placeholder="Custom short code (optional)..."
-        value={customCode} 
+        value={customCode}
         onChange={(e) => setCustomCode(e.target.value)}
         sx={{
           mb: 2,
