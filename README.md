@@ -1,24 +1,5 @@
 # SHORTIFY - url shortener 
 
-```
-/root
-│
-├── /shortify         # React frontend app
-│   ├── /src
-│   ├── /public
-│   └── package.json
-│
-├── /api         # Backend code (Node.js/Express)
-│   ├── /routes
-│   ├── /models
-│   ├── /controllers
-│   └── package.json
-│
-├── README.md       
-└── .gitignore      
-```
-
-
 ## Deployed Application
 
 You can access the live application here: [https://shortify-n5pm.onrender.com/](https://shortify-n5pm.onrender.com/)
@@ -41,6 +22,26 @@ The source code is hosted on GitHub. You can find the repository here: [https://
    ```bash
    git clone https://github.com/haichaukhuu/shortify-url-shortener
    cd project-root/api
+   
+**Project folder tree**
+```
+/root
+│
+├── /shortify         # React frontend app
+│   ├── /src
+│   ├── /public
+│   └── package.json
+│
+├── /api         # Backend code (Node.js/Express)
+│   ├── /routes
+│   ├── /models
+│   ├── /controllers
+│   └── package.json
+│
+├── README.md       
+└── .gitignore      
+```
+
 
 2. Install dependencies:
    ```bash
