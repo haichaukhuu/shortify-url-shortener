@@ -1,5 +1,5 @@
 const crypto = require('crypto'); 
-const Url = require('../models/url');
+const Url = require('../models/url_model');
 
 const createShortenedUrl = async (req, res) => {
     try {
