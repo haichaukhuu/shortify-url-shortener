@@ -22,7 +22,7 @@ The source code is hosted on GitHub. You can find the repository here: [https://
    ```bash
    git clone https://github.com/haichaukhuu/shortify-url-shortener
    cd project-root/api
-   
+
 **Project folder tree**
 ```
 /root
@@ -74,7 +74,7 @@ The source code is hosted on GitHub. You can find the repository here: [https://
 - Generated shortened URLs can be copied to the clipboard
 - User-friendly interface designed with Material UI.
 
-## Known Issues or Limitations
+## Known Issues and Limitations
 - The application currently does not handle user authentication.
 - There is no password protection or expiry date for URLs.
 
